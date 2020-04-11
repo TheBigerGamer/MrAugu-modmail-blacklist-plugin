@@ -1,0 +1,11 @@
+{
+    "repository": "",
+    "version": "1.0.0",
+    "description": "Blacklist plugin for MrAugu Modmail Bot",
+    "tree": "master",
+    "title": "Blacklist Plugin",
+    "name": "demo",
+    "dependencies": {
+		"quick.db": "^6.3.2"
+	}
+  }
