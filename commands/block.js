@@ -98,8 +98,6 @@ class Block extends Command {
   
       let towrite = {userID: `${member.id}`, reason: `${reason}`, moderator: `${message.author.tag} (User ID: ${message.author.id})`};
       await db.set(`BLPLugin.blocked_${member.id}`, towrite)
-  
-      let log = await db.fetch(`blocked_${member.id}`)
       
       db.add(`BLPLugin.blocks`, 1)
     
