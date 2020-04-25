@@ -22,7 +22,7 @@ class blConfig extends Command {
       name: "blConfig",
       description: "Change the config of the blacklist system.",
       category: "BlackList",
-      usage: "add [setting] [subsetting] [value] || add [setting] [subsetting]\nedit [setting] [subsetting] [value] || edit [setting] [subsetting]\ndelete [setting] <subsetting>",
+      usage: "add [setting] [subsetting] [value] || add [setting] [value]\nedit [setting] [subsetting] [value] || edit [setting] [value]\ndelete [setting] <subsetting>",
       enabled: true,
       guildOnly: false,
       aliases: aliases,
