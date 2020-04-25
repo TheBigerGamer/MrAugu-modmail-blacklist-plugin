@@ -14,7 +14,7 @@ function sleep(milliseconds) {
 sleep(1000)
 
 let aliases = []
-if (!config.aliases.Unblock[0]) aliases = ['bl_B']
+if (!config.aliases.Block[0]) aliases = ['bl_B']
 
 class Block extends Command {
   constructor (client) {
