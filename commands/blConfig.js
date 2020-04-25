@@ -108,7 +108,8 @@ class blConfig extends Command {
 	  })
 	  let embed = new Discord.MessageEmbed()
           .setTitle(`BlackList Plugin v${PluginData.version}`)
-	  .addFields(field, `Methods: add/edit`)
+	  .setColor('#000000')
+	  .addField(field, `Methods: add/edit/delete`)
 	  .setFooter('Made by DarkenLight Mage#2401', 'https://cdn.discordapp.com/avatars/472720369346936842/b7707730fcec6b397c1c48616b6fb79e.png?size=2048')
 		
 	  return message.channel.send(embed)
