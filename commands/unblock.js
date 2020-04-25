@@ -16,7 +16,7 @@ sleep(1000)
 let aliases = []
 if (!config.aliases.Unblock[0]) aliases = ['bl_B']
 
-class Block extends Command {
+class Unblock extends Command {
   constructor (client) {
     super(client, {
       name: "Unblock",
