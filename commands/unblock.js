@@ -53,7 +53,7 @@ class Block extends Command {
     
     async function writereason(towrite) {
       await db.set(`BLPlugin_tempuser_${message.guild.id}`, user)
-      var user1 = await db.fetch(`glock_tempuser_${message.guild.id}`)
+      var user1 = await db.fetch(`BLPlugin_tempuser_${message.guild.id}`)
       await db.set(`BLPlugin_temp_${message.guild.id}`, towrite, {target: '.reason'})
       await db.set(`BLPlugin_temp_completed_${message.guild.id}`, 1)
       end()
