@@ -84,10 +84,10 @@ class Block extends Command {
       let gban_TEMP = await db.fetch(`BLPLugin_temp_${message.guild.id}`)
       let reason = gban_TEMP.reason
 
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setAuthor("New Blacklist", this.client.user.displayAvatarURL)
         .setDescription("A user was blacklisted!")
-        .setColor("#2C2F33")
+        .setColor("#000000")
         .addField("User:",`${member.username}#${member.discriminator} (user ID: ${user})`)
         .addField("Reason:", reason)
         .addField("Moderator:",`${message.author.tag} (user ID: ${message.author.id})`)
