@@ -14,7 +14,7 @@ function sleep(milliseconds) {
 sleep(1000)
 
 let aliases = []
-if (!config.aliases.check[0]) aliases = ['bl_C']
+if (!config.aliases.Check[0]) aliases = ['bl_C']
 
 class Check extends Command {
   constructor (client) {
