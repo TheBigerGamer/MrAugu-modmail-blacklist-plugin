@@ -35,21 +35,20 @@ class Block extends Command {
   
   async run (message, args, level, reply) {
 	try {
-    if (args[0]) {
-      var user = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-      if (!user) return message.reply(':x: You need someone to block.')
+		if (args[0]) {
+			var user = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+			if (!user) return message.reply(':x: You need someone to block.')
 	
-	  var logChannel = this.client.channels.cache.get(config.modLogChannel)
+			var logChannel = this.client.channels.cache.get(config.modLogChannel)
 	 
-      var member = await this.client.users.fetch(user, false).catch(() => null);
-
-      console.log(member)
-      if (!member) return message.channel.send(`:x: I couldn't find a user with the ID of \`${user}\`!`);
-    } else {
-      let totalbans = await db.fetch(`gtotal_blocks`)  
-      if(!totalbans) totalbans = '0'
+			var member = await this.client.users.fetch(user, false).catch(() => null);
+			//console.log(member)
+			if (!member) return message.channel.send(`:x: I couldn't find a user with the ID of \`${user}\`!`);
+		} else {
+			let totalbans = await db.fetch(`gtotal_blocks`)  
+			if(!totalbans) totalbans = '0'
       
-      return message.channel.send(`Total blocked users: ${totalbans}`)
+			return message.channel.send(`Total blocked users: ${totalbans}`)
     }
     
     async function writereason(towrite) {
@@ -109,8 +108,8 @@ class Block extends Command {
       await db.delete(`gblock_temp_${message.guild.id}`)
     } else {
       type()
-    }
-    }
+			}
+		}
 	} catch (e) {this.client.logger.error(e, 'error')}
   }
 }
