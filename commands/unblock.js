@@ -14,13 +14,13 @@ function sleep(milliseconds) {
 sleep(1000)
 
 let aliases = []
-if (!config.aliases.block[0]) aliases = ['bl_B']
+if (!config.aliases.Unblock[0]) aliases = ['bl_B']
 
 class Block extends Command {
   constructor (client) {
     super(client, {
-      name: "block",
-      description: "Blocks a user from contacting modmail.",
+      name: "Unblock",
+      description: "Unblocks a user from contacting modmail.",
       category: "Blacklist",
       usage: "[user]",
       enabled: true,
@@ -37,7 +37,7 @@ class Block extends Command {
 	try {
 		if (args[0]) {
 			var user = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-			if (!user) return message.reply(':x: You need someone to block.')
+			if (!user) return message.reply(':x: You need someone to unblock.')
 	
 			var logChannel = this.client.channels.cache.get(config.modLogChannel)
 	 
@@ -87,7 +87,7 @@ class Block extends Command {
 
       const embed = new Discord.RichEmbed()
         .setAuthor("New Blacklist", this.client.user.displayAvatarURL)
-        .setDescription("A user was blacklisted!")
+        .setDescription("A user was unblacklisted!")
         .setColor("#2C2F33")
         .addField("User:",`${member.username}#${member.discriminator} (user ID: ${user})`)
         .addField("Reason:", reason)
@@ -95,14 +95,12 @@ class Block extends Command {
         .setTimestamp()
     
       logChannel.send(embed);
-      message.channel.send(`:white_check_mark: Successfully blacklisted \`${member.tag}\`!`);
+      message.channel.send(`:white_check_mark: Successfully unblacklisted \`${member.tag}\`!`);
   
       let towrite = {userID: `${member.id}`, reason: `${reason}`, moderator: `${message.author.tag} (User ID: ${message.author.id})`};
-      await db.set(`BLPlugin.blocked_${member.id}`, towrite)
-  
-      let log = await db.fetch(`BLPlugin.blocked_${member.id}`)
+      await db.delete(`BLPlugin.blocked_${member.id}`)
       
-      db.add(`BLPlugin.blocks`, 1)
+      db.subtract(`BLPlugin.blocks`, 1)
     
       await db.set(`BLPlugin_temp_completed_${message.guild.id}`, 0)
       await db.delete(`BLPlugin_temp_${message.guild.id}`)
